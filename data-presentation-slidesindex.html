@@ -1,0 +1,212 @@
+<!-- วางทั้งไฟล์ในช่อง HTML ของ CodePen ได้เลย (CSS และ JS อยู่ในไฟล์เดียว) -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Mitr:wght@400;500&family=Sarabun:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f6f0;--ink:#1c2a22;--mut:#5b6b61;--g:#2f7a55;--y:#e0a82e;--r:#d4553f;--b:#2c4a6e;--card:#fff;--line:#d9e0d3}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%;background:var(--bg);color:var(--ink);font:400 clamp(16px,2vw,22px)/1.6 Sarabun,sans-serif;overflow:hidden}
+.s{position:absolute;inset:0 0 56px;padding:4vh 6vw;display:none;flex-direction:column;justify-content:center;overflow:auto}
+.s.on{display:flex}
+h1,h2{font-family:Mitr,sans-serif;font-weight:500;line-height:1.25}
+h1{font-size:clamp(34px,6vw,72px);text-align:center}
+h2{font-size:clamp(24px,3.6vw,42px);color:var(--g);margin-bottom:.5em}
+.sub{color:var(--mut);margin-top:-.3em;margin-bottom:.8em}
+.cols{display:flex;gap:3vw;align-items:center;flex-wrap:wrap}
+.cols>*{flex:1 1 300px}
+ul{padding-left:1.2em}li{margin:.35em 0}
+.box{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:1em 1.2em}
+.no{border-left:6px solid var(--r)}.ok{border-left:6px solid var(--g)}
+table{border-collapse:collapse;width:100%;background:var(--card)}
+td,th{border:1px solid var(--line);padding:.5em .8em;text-align:center}th{background:var(--g);color:#fff}
+svg{width:100%;height:auto;max-height:46vh;background:var(--card);border:1px solid var(--line);border-radius:10px}
+svg text{font:13px Sarabun,sans-serif;fill:var(--ink)}
+.cap{text-align:center;font-weight:600;margin-top:.3em}
+.bad .cap{color:var(--r)}.good .cap{color:var(--g)}
+.tabs{display:flex;gap:.6em;margin-bottom:.8em;flex-wrap:wrap}
+button{font:inherit;cursor:pointer;border:2px solid var(--g);background:#fff;color:var(--g);border-radius:8px;padding:.2em .9em}
+button.on,button:hover{background:var(--g);color:#fff}
+button:focus-visible{outline:3px solid var(--y)}
+body{background:radial-gradient(circle,#d6e6cf 2px,transparent 2.5px) 0 0/28px 28px,var(--bg)}
+#nav{position:fixed;bottom:0;left:0;right:0;height:56px;display:flex;align-items:center;justify-content:center;gap:1.5em;background:#fff;border-top:1px solid var(--line)}
+#bar{position:fixed;top:0;left:0;height:4px;background:var(--g);transition:width .3s}
+.tag{display:inline-block;padding:0 .6em;border-radius:6px;color:#fff;font-weight:600}
+.add{display:flex;gap:.5em;flex-wrap:wrap;margin-bottom:.5em}
+input{font:inherit;padding:.15em .6em;border:2px solid var(--line);border-radius:8px;min-width:0;flex:1 1 140px}
+input:focus-visible{outline:3px solid var(--y)}
+.chips{display:flex;gap:.4em;flex-wrap:wrap;margin-bottom:.4em}
+.chip{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:0 .3em 0 .8em;font-size:.85em}
+.chip button{border:0;background:none;color:var(--r);padding:0 .4em;font-weight:600}
+.chip button:hover{background:none;color:var(--r)}
+.msg{color:var(--r);min-height:1.5em;font-size:.85em}
+</style>
+
+<div id="bar"></div>
+
+<!-- 1 -->
+<section class="s"><h1>การนำเสนอข้อมูล</h1></section>
+
+<!-- 2 -->
+<section class="s"><h2>การนำเสนอข้อมูลแบบไม่เป็นแบบแผน</h2>
+<div class="cols"><div>
+<p class="box no">“เดือนนี้สาขาเหนือขายไข่ไก่ได้ 120 ถาด สาขาใต้ขายได้ 95 ถาด ส่วนสาขาตะวันออกขายได้ 150 ถาด และสาขาตะวันตกขายได้ 80 ถาด…”</p>
+<p style="margin-top:.8em">คือการเล่าด้วยข้อความหรือคำบรรยายทั่วไป ไม่มีโครงสร้างตายตัว เช่น ข่าว บทความ การเล่าเรื่อง</p></div>
+<div><p><b>ลองตอบ:</b> สาขาไหนขายได้มากที่สุด? สาขาไหนน้อยที่สุด?</p>
+<ul><li>ข้อดี: อธิบายบริบทและเหตุผลได้ละเอียด</li><li>ข้อเสีย: ต้องอ่านทั้งย่อหน้า และเปรียบเทียบยาก</li></ul></div></div></section>
+
+<!-- 3 -->
+<section class="s"><h2>การนำเสนอข้อมูลแบบมีแบบแผน</h2>
+<div class="cols"><div><table><tr><th>สาขา</th><th>ยอดขาย (ถาด)</th></tr><tr><td>เหนือ</td><td>120</td></tr><tr><td>ใต้</td><td>95</td></tr><tr><td>ตะวันออก</td><td>150</td></tr><tr><td>ตะวันตก</td><td>80</td></tr></table></div>
+<div><p>ข้อมูลชุดเดียวกัน จัดเป็นระเบียบด้วยตาราง ตอบคำถามจากสไลด์ก่อนได้ภายในไม่กี่วินาที</p>
+<p class="box ok" style="margin-top:.8em">อยากให้เห็นภาพชัดขึ้นอีก เราใช้ <b>แผนภูมิ</b></p></div></div></section>
+
+<!-- 4 -->
+<section class="s"><h2>แผนภูมิที่เราจะเรียน</h2>
+<div class="cols"><div class="good"><div data-c="bar1"></div><p class="cap">แผนภูมิแท่ง</p></div>
+<div class="good"><div data-c="line1"></div><p class="cap">กราฟเส้น</p></div>
+<div class="good"><div data-c="pie1"></div><p class="cap">แผนภูมิวงกลม</p></div></div>
+<p class="sub" style="margin-top:1em">ข้อมูลแบบไหนน่าจะเหมาะกับกราฟอะไร? คิดไว้ก่อนแล้วมาดูกัน</p></section>
+
+<!-- 5 -->
+<section class="s"><h2>แผนภูมิแท่ง: คุณสมบัติ</h2>
+<div class="cols"><ul><li>แกนนอนเป็น <b>หมวดหมู่</b> แกนตั้งเป็น <b>ปริมาณ</b></li><li>ความสูงของแท่งแทนค่าของข้อมูล</li><li>แท่งกว้างเท่ากัน เว้นช่องว่างเท่ากัน</li><li>แกนตั้งต้องเริ่มจาก <b>0</b> (เราจะกลับมาพูดอีกครั้งตอนจับผิดกราฟ)</li></ul>
+<div data-c="bar1"></div></div></section>
+
+<!-- 6 -->
+<section class="s"><h2>แผนภูมิแท่ง: กรณีที่ใช้</h2>
+<div class="cols"><div><p>เหมาะกับการ <b>เปรียบเทียบปริมาณระหว่างหมวดหมู่ที่แยกจากกัน</b></p>
+<ul><li>คะแนนสอบแต่ละห้อง</li><li>จำนวนสัตว์แต่ละชนิดในฟาร์ม</li><li>ยอดขายแต่ละสาขา</li></ul>
+<p>แตกย่อยได้เป็น แท่งกลุ่ม (เทียบหลายชุดข้างกัน) และแท่งซ้อน (เห็นส่วนประกอบในแต่ละแท่ง)</p>
+<p class="box no">ไม่เหมาะกับ: ข้อมูลที่ต้องการดูแนวโน้มต่อเนื่องตามเวลาแบบละเอียด</p></div>
+<div data-c="bar2"></div></div></section>
+
+<!-- 7 -->
+<section class="s"><h2>กราฟเส้น: คุณสมบัติ</h2>
+<div class="cols"><ul><li>แกนนอนเป็น <b>ลำดับต่อเนื่อง</b> มักเป็นเวลา</li><li>จุดข้อมูลเชื่อมกันด้วยเส้น</li><li>ความชันบอกอัตราการเปลี่ยนแปลง: เส้นขึ้น = เพิ่ม, เส้นลง = ลด, เส้นราบ = คงที่</li><li>ใส่ได้หลายเส้นในกราฟเดียวเพื่อเปรียบเทียบ</li></ul>
+<div data-c="line2"></div></div></section>
+
+<!-- 8 -->
+<section class="s"><h2>กราฟเส้น: กรณีที่ใช้</h2>
+<div class="cols"><div><p>เหมาะกับ <b>ข้อมูลที่เปลี่ยนแปลงตามเวลา</b> เพื่อดูแนวโน้ม</p>
+<ul><li>อุณหภูมิรายเดือน</li><li>น้ำหนักไก่รายสัปดาห์</li><li>ราคาหุ้นรายวัน</li></ul>
+<p class="box no">ไม่ควรใช้กับหมวดหมู่ที่ไม่มีลำดับ เช่น ชนิดสัตว์ เพราะเส้นที่ลากเชื่อมสื่อความหมายที่ไม่มีอยู่จริง</p></div>
+<div data-c="line3"></div></div></section>
+
+<!-- 9 -->
+<section class="s"><h2>แผนภูมิวงกลม: คุณสมบัติ</h2>
+<div class="cols"><div><ul><li>วงกลมทั้งวงแทน <b>ส่วนรวม 100%</b></li><li>แต่ละส่วนแทนสัดส่วนของหมวดหมู่หนึ่ง</li><li>ผลรวมทุกส่วนต้องครบเต็มวง</li></ul>
+<p class="box ok">ปัจจุบัน Excel หรือ Google Sheets สร้างให้อัตโนมัติ สิ่งที่เราต้องทำคือ <b>อ่านและตีความให้เป็น</b></p></div>
+<div data-c="pie1"></div></div></section>
+
+<!-- 10 -->
+<section class="s"><h2>แผนภูมิวงกลม: กรณีที่ใช้</h2>
+<div class="cols"><div><p>เหมาะกับการดู <b>สัดส่วนของส่วนย่อยต่อภาพรวม</b></p>
+<ul><li>งบประมาณแบ่งตามหมวด</li><li>สัดส่วนนักเรียนแต่ละสาขา</li><li>ควรมีไม่เกิน 5–6 ส่วน</li></ul>
+<p class="box no">ไม่เหมาะเมื่อหมวดเยอะ หรือสัดส่วนใกล้เคียงกันมาก เพราะตามนุษย์เทียบขนาดมุมได้ยาก</p></div>
+<div data-c="pie2"></div></div></section>
+
+<!-- 11 -->
+<section class="s"><h2>เปรียบเทียบกราฟทั้ง 3 ชนิด</h2>
+<div class="tabs" id="tabs"></div>
+<form id="f" class="add"><input id="nm" placeholder="ชื่อหมวด เช่น ค่าบำรุงรักษา" maxlength="20" aria-label="ชื่อหมวด"><input id="vl" type="number" min="0" step="any" placeholder="ค่า เช่น 11000" aria-label="ค่า"><button type="submit" class="on">เพิ่ม / แก้ค่า</button><button type="button" id="rs">รีเซ็ตชุดนี้</button></form>
+<div id="chips" class="chips"></div><p id="msg" class="msg"></p>
+<div class="cols" id="cmp"></div>
+<p class="box" id="why" style="margin-top:.8em"></p></section>
+
+<!-- 12 -->
+<section class="s"><h2>เลือกกราฟอย่างไร</h2>
+<p class="sub">เริ่มจากถามตัวเองว่า “ข้อมูลนี้อยากสื่ออะไร”</p>
+<table><tr><th>อยากสื่อ</th><th>เลือก</th><th>ตัวอย่าง</th></tr>
+<tr><td>เปรียบเทียบปริมาณ</td><td>แผนภูมิแท่ง</td><td>จำนวนสัตว์แต่ละชนิด</td></tr>
+<tr><td>ดูแนวโน้มตามเวลา</td><td>กราฟเส้น</td><td>น้ำหนักเฉลี่ยรายเดือน</td></tr>
+<tr><td>ดูสัดส่วนของส่วนรวม</td><td>แผนภูมิวงกลม</td><td>ค่าใช้จ่ายแยกตามประเภท</td></tr></table>
+<p style="margin-top:.8em">ข้อมูลบางชุดใช้ได้หลายกราฟ แต่แต่ละกราฟ <b>เน้นเรื่องที่ต่างกัน</b></p></section>
+
+<!-- 13 -->
+<section class="s"><h2>การตัดขาดแกน Y</h2>
+<p class="sub">ข้อมูลชุดเดียวกัน: คะแนนเฉลี่ยห้อง ก = 96, ห้อง ข = 98</p>
+<div class="cols"><div class="good"><div data-c="cut0"></div><p class="cap">แกนเริ่มที่ 0</p></div>
+<div class="bad"><div data-c="cut95"></div><p class="cap">แกนเริ่มที่ 95</p></div></div>
+<p class="box" style="margin-top:.8em"><b>ชวนคิด:</b> ความสูงของแท่งสื่อสัดส่วนที่แท้จริงหรือไม่? แผนภูมิแท่งควรเริ่มที่ 0 เสมอ ส่วนกราฟเส้นตัดแกนได้ถ้าระบุให้ชัดเจน</p></section>
+
+<!-- 14 -->
+<section class="s"><h2>การยืด/ย่อสเกลแกน</h2>
+<p class="sub">ข้อมูลชุดเดียวกัน: น้ำหนักเฉลี่ยไก่ 50 → 58 กรัม ใน 8 สัปดาห์</p>
+<div class="cols"><div class="bad"><div data-c="flat"></div><p class="cap">ย่อสเกล: “แทบไม่เปลี่ยน”</p></div>
+<div class="bad"><div data-c="steep"></div><p class="cap">ยืดสเกล: “พุ่งพรวด”</p></div></div>
+<p class="box" style="margin-top:.8em"><b>วิธีตรวจ:</b> ดูตัวเลขบนแกนก่อนดูรูปร่างกราฟ และสังเกตว่าช่วงสเกลเท่ากันไหม หรือเลือกช่วงเวลาเฉพาะที่ให้ผลตามที่ต้องการหรือเปล่า</p></section>
+
+<!-- 15 -->
+<section class="s"><h2>จริยธรรมในการนำเสนอข้อมูลทางสถิติ</h2>
+<div class="cols"><ul><li>เลือกแสดงเฉพาะข้อมูลที่เข้าข้างตนเอง</li><li>ไม่ระบุแหล่งที่มา</li><li>ไม่ระบุขนาดตัวอย่าง</li><li>กราฟที่ชักจูงส่งผลต่อการตัดสินใจของผู้คนจริง ๆ</li></ul>
+<div class="box ok"><b>ถามกราฟทุกครั้ง</b><ul><li>แกนเริ่มที่ไหน?</li><li>สเกลเท่ากันหรือเปล่า?</li><li>ข้อมูลมาจากไหน กี่ตัวอย่าง?</li><li>มีอะไรถูกซ่อนไว้ไหม?</li></ul></div></div></section>
+
+<div id="nav"><button id="pv" aria-label="ก่อนหน้า">◀</button><span id="ct"></span><button id="nx" aria-label="ถัดไป">▶</button></div>
+
+<script>
+const COL=['#2f7a55','#e0a82e','#d4553f','#2c4a6e','#8a9a5b','#a0627a'];
+const W=360,H=230,L=40,R=14,T=14,B=34;
+function ticks(mn,mx,n=4){return Array.from({length:n+1},(_,i)=>mn+(mx-mn)*i/n)}
+function axes(mn,mx){let s='';ticks(mn,mx).forEach(t=>{const y=H-B-(t-mn)/(mx-mn)*(H-B-T);s+=`<line x1="${L}" x2="${W-R}" y1="${y}" y2="${y}" stroke="#d9e0d3"/><text x="${L-5}" y="${y+4}" text-anchor="end">${+t.toFixed(1)}</text>`});return s}
+function bar(l,v,o={}){const mn=o.min??0,mx=o.max??Math.max(...v)*1.1,w=(W-L-R)/l.length;
+let s=axes(mn,mx);v.forEach((x,i)=>{const h=(x-mn)/(mx-mn)*(H-B-T);s+=`<rect x="${L+i*w+w*.15}" y="${H-B-h}" width="${w*.7}" height="${h}" fill="${COL[o.one?0:i%6]}"/><text x="${L+i*w+w/2}" y="${H-B+16}" text-anchor="middle">${l[i]}</text>`});
+return `<svg viewBox="0 0 ${W} ${H}">${s}</svg>`}
+function line(l,v,o={}){const mn=o.min??0,mx=o.max??Math.max(...v)*1.1,w=(W-L-R)/(l.length-1||1);
+const P=v.map((x,i)=>[L+i*w,H-B-(x-mn)/(mx-mn)*(H-B-T)]);
+let s=axes(mn,mx)+`<polyline fill="none" stroke="${COL[0]}" stroke-width="3" points="${P.map(p=>p.join(',')).join(' ')}"/>`;
+P.forEach((p,i)=>s+=`<circle cx="${p[0]}" cy="${p[1]}" r="4" fill="${COL[0]}"/><text x="${p[0]}" y="${H-B+16}" text-anchor="middle">${l[i]}</text>`);
+return `<svg viewBox="0 0 ${W} ${H}">${s}</svg>`}
+function pie(l,v){const tot=v.reduce((a,b)=>a+b),cx=110,cy=115,r=90;let a=-Math.PI/2,s='';
+v.forEach((x,i)=>{const b=a+x/tot*2*Math.PI,big=b-a>Math.PI?1:0,m=(a+b)/2;
+s+=`<path d="M${cx},${cy}L${cx+r*Math.cos(a)},${cy+r*Math.sin(a)}A${r},${r} 0 ${big} 1 ${cx+r*Math.cos(b)},${cy+r*Math.sin(b)}Z" fill="${COL[i%6]}" stroke="#fff" stroke-width="2"/>
+<text x="${cx+r*.62*Math.cos(m)}" y="${cy+r*.62*Math.sin(m)+4}" text-anchor="middle" style="fill:#fff;font-weight:600">${Math.round(x/tot*100)}%</text>
+<rect x="225" y="${40+i*28}" width="14" height="14" fill="${COL[i%6]}"/><text x="245" y="${52+i*28}">${l[i]}</text>`;a=b});
+return `<svg viewBox="0 0 ${W} ${H}">${s}</svg>`}
+
+const br=['เหนือ','ใต้','ตะวันออก','ตะวันตก'],bv=[120,95,150,80];
+const mo=['ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.'],mv=[1.2,1.6,2.1,2.5,2.9,3.4];
+const wk=[1,2,3,4,5,6,7,8],wv=[50,51,52,53,54,56,57,58];
+const farm=['โค','แพะ','ไก่','เป็ด'],fv=[40,25,120,60];
+const cost=['อาหารหยาบ','หัวอาหาร','ยา','แรงงาน'],cv=[45,30,10,15];
+const CH={
+bar1:()=>bar(br,bv),line1:()=>line(mo,mv),pie1:()=>pie(br,bv),
+bar2:()=>bar(farm,fv),line2:()=>line(mo,mv),line3:()=>line(wk,[28,29,31,33,35,38,41,44],{min:20}),pie2:()=>pie(cost,cv),
+cut0:()=>bar(['ห้อง ก','ห้อง ข'],[96,98],{min:0,max:100,one:1}),
+cut95:()=>bar(['ห้อง ก','ห้อง ข'],[96,98],{min:95,max:99,one:1}),
+flat:()=>line(wk,wv,{min:0,max:200}),
+steep:()=>line(wk,wv,{min:49,max:59})};
+document.querySelectorAll('[data-c]').forEach(e=>e.innerHTML=CH[e.dataset.c]());
+
+/* สไลด์เปรียบเทียบ */
+const DS=[
+{n:'A: หมวดหมู่ (จำนวนสัตว์)',l:farm,v:fv,best:0,why:'ข้อมูลเป็นหมวดหมู่ที่แยกจากกัน แผนภูมิแท่งเทียบปริมาณได้ตรงที่สุด กราฟเส้นลากเชื่อมชนิดสัตว์ที่ไม่มีลำดับ จึงสื่อผิด ส่วนวงกลมใช้ได้แต่ผลรวมไม่มีความหมายนัก'},
+{n:'B: ตามเวลา (น้ำหนักรายเดือน)',l:mo,v:mv,best:1,why:'ข้อมูลเรียงตามเวลา กราฟเส้นเห็นแนวโน้มชัดที่สุด วงกลมใช้ไม่ได้เพราะน้ำหนักแต่ละเดือนไม่ได้เป็นส่วนหนึ่งของ “ทั้งหมด” เดียวกัน'},
+{n:'C: สัดส่วน (ค่าใช้จ่าย)',l:cost,v:cv,best:2,why:'ข้อมูลรวมกันเป็น 100% แผนภูมิวงกลมเห็นสัดส่วนต่อภาพรวมชัดที่สุด แต่ถ้าอยากเทียบว่าหมวดไหนมากกว่ากันแบบละเอียด แผนภูมิแท่งอ่านง่ายกว่า'}];
+const NM=['แผนภูมิแท่ง','กราฟเส้น','แผนภูมิวงกลม'];
+let cur=0;const ST=DS.map(d=>({l:[...d.l],v:[...d.v]}));
+function show(k){cur=k;msg.textContent='';const d=Object.assign({},DS[k],ST[k]);drawList();
+document.querySelectorAll('#tabs button').forEach((b,i)=>b.classList.toggle('on',i==k));
+cmp.innerHTML=[bar(sh(d.l),d.v),line(sh(d.l),d.v),pie(d.l.map(esc),d.v)].map((s,i)=>`<div class="${i==d.best?'good':''}">${s}<p class="cap">${NM[i]}${i==d.best?' ★ เหมาะที่สุด':''}</p></div>`).join('');
+why.textContent=d.why}
+DS.forEach((d,i)=>{const b=document.createElement('button');b.textContent=d.n;b.onclick=()=>show(i);tabs.appendChild(b)});
+const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const sh=a=>a.map(x=>esc(x.length>8?x.slice(0,7)+'…':x));
+function drawList(){const d=ST[cur];chips.innerHTML=d.l.map((x,i)=>`<span class="chip">${esc(x)} ${d.v[i]}<button type="button" data-i="${i}" aria-label="ลบ ${esc(x)}">×</button></span>`).join('')}
+f.onsubmit=e=>{e.preventDefault();const d=ST[cur],n=nm.value.trim(),v=parseFloat(vl.value);
+if(!n||!(v>0)){show(cur);msg.textContent='กรอกชื่อหมวดและค่าที่มากกว่า 0';return}
+const i=d.l.indexOf(n);
+if(i>=0)d.v[i]=v;else if(d.l.length>=6){show(cur);msg.textContent='แผนภูมิวงกลมอ่านยากเมื่อเกิน 6 ส่วน จึงจำกัดไว้ที่ 6 หมวด ลองลบหมวดเดิมก่อนเพิ่มใหม่';return}else{d.l.push(n);d.v.push(v)}
+show(cur);nm.value=vl.value='';nm.focus()};
+chips.onclick=e=>{const b=e.target.closest('button');if(!b)return;const d=ST[cur];if(d.l.length<=2){msg.textContent='ต้องเหลืออย่างน้อย 2 หมวด';return}d.l.splice(+b.dataset.i,1);d.v.splice(+b.dataset.i,1);show(cur)};
+rs.onclick=()=>{ST[cur]={l:[...DS[cur].l],v:[...DS[cur].v]};show(cur)};
+show(0);
+
+/* ควบคุมสไลด์ */
+const S=[...document.querySelectorAll('.s')];let k=+location.hash.slice(1)-1||0;
+function go(n){k=Math.max(0,Math.min(S.length-1,n));S.forEach((s,i)=>s.classList.toggle('on',i==k));
+ct.textContent=`${k+1} / ${S.length}`;bar_.style.width=(k+1)/S.length*100+'%';location.hash=k+1}
+const bar_=document.getElementById('bar');
+pv.onclick=()=>go(k-1);nx.onclick=()=>go(k+1);
+addEventListener('keydown',e=>{if(e.target.tagName=='INPUT')return;if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();go(k+1)}if(['ArrowLeft','PageUp'].includes(e.key))go(k-1)});
+go(k);
+</script>
